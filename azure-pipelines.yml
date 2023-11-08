@@ -7,9 +7,9 @@ trigger:
 - main
 
 pool:
-    name: Default
-    demands:
-    - agent.name -equals jatin
+  name: Default
+  demands:
+  - agent.name -equals jatin
 
 variables:
 
