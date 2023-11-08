@@ -6,6 +6,11 @@
 trigger:
 - main
 
+pool:
+    name: Default
+    demands:
+    - agent.name -equals jatin
+
 variables:
 
   # Azure Resource Manager connection created during pipeline creation
