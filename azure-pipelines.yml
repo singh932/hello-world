@@ -7,10 +7,7 @@ trigger:
 - main
 
 pool:
-  name: Azure Pipelines
-  demands:
-  - agent.name -equals Hosted Agent
-variables:
+  name: Default
 
   # Azure Resource Manager connection created during pipeline creation
   azureSubscription: '2224dc86-2de5-4e9c-bc5a-1c7e8b7333fe'
