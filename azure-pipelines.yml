@@ -9,6 +9,7 @@ trigger:
 
 pool:
   name: Default
+  demands: '3.330.0'
 
 steps:
 - task: Maven@4
