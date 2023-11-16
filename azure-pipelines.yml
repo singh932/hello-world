@@ -30,11 +30,3 @@ steps:
     ArtifactName: 'drop'
     publishLocation: 'Container'
 
-- task: AzureRmWebAppDeployment@4
-  inputs:
-    ConnectionType: 'AzureRM'
-    azureSubscription: 'Azure subscription 1(3)(26dd4008-5366-45cf-9428-3bae0d011d85)'
-    appType: 'webAppLinux'
-    WebAppName: 'jatin-balar-app-01111'
-    packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
-    RuntimeStack: 'JAVA|17-java17'
