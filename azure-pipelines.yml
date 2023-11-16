@@ -19,10 +19,10 @@ steps:
     publishJUnitResults: true
     testResultsFiles: '**/surefire-reports/TEST-*.xml'
     goals: 'package'
-- task: PublishTestResults@2
+
+- task: PublishCodeCoverageResults@2
   inputs:
-    testResultsFormat: 'JUnit'
-    testResultsFiles: '**/TEST-*.xml'
+    summaryFileLocation: '**/surefire-reports/TEST-*.xml'
 - task: CopyFiles@2
   inputs:
     Contents: '**'
