@@ -10,6 +10,11 @@ public class HelloWorldController {
 	public String helloWorld2() {
 		return "hello world this is app services..................!";
 	} 
+
+	@GetMapping("/abc")
+	public String helloWorld3() {
+		return "hello world this is app services..................!";
+	} 
 	@GetMapping("/hello-world")
 	public String helloWorld() {
 		return "hello world..................!";
