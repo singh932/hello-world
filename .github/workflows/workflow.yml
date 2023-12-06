@@ -70,6 +70,6 @@ jobs:
       id: deploy-to-webapp
       uses: azure/webapps-deploy@85270a1854658d167ab239bce43949edb336fa7c
       with:
-        app-name: 'jatin-balar'
+        app-name: 'jatin-balar-1'
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_1 }}
         package: '*.jar'
