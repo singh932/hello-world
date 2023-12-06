@@ -1,21 +1,26 @@
-name: PipelineWorkflow
+name: Java CI
 
 on:
   push:
     branches:
       - main
-  pull_request:
-    branches: 
-      - main
 
 jobs:
-    build:
-        name: Azure Pipeline
-        runs-on: ubuntu-latest
-        steps:
-        - name: Azure Pipelines Action
-          uses: Azure/pipelines@v1
-          with:
-            azure-devops-project-url: https://dev.azure.com/stephinsolomon/pipeline
-            azure-pipeline-name: 'Jatin-Balar.hello-world'
-            azure-devops-token: ${{ secrets.AZURE_DEVOPS_TOKEN }}
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout Repository
+      uses: actions/checkout@v2
+
+    - name: Set up JDK
+      uses: actions/setup-java@v2
+      with:
+        distribution: 'adopt'
+        java-version: '11'
+
+    - name: Build with Maven
+      run: mvn -B package --file pom.xml
+
+    - name: Run Tests
+      run: mvn test --file pom.xml
