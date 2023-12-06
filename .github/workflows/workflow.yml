@@ -28,7 +28,7 @@ jobs:
         name: my-artifact
         path: '${{github.workspace}}/target/*.jar' 
 
-  deploy:
+  staging:
     runs-on: ubuntu-latest
 
     needs: build
@@ -49,4 +49,27 @@ jobs:
       with:
         app-name: 'jatin-balar'
         publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE }}
+        package: '*.jar'
+
+  production:
+    runs-on: ubuntu-latest
+      
+    needs: staging
+            
+    environment:
+      name: 'production'
+      url: ${{ steps.deploy-to-webapp.outputs.webapp-url }}
+            
+    steps:
+    - name: Download artifact from build job
+      uses: actions/download-artifact@v3
+      with:
+        name: my-artifact
+            
+    - name: Deploy to Azure Web App
+      id: deploy-to-webapp
+      uses: azure/webapps-deploy@85270a1854658d167ab239bce43949edb336fa7c
+      with:
+        app-name: 'jatin-balar'
+        publish-profile: ${{ secrets.AZURE_WEBAPP_PUBLISH_PROFILE_1 }}
         package: '*.jar'
